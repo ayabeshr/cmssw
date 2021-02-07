@@ -1,7 +1,7 @@
 #ifndef DataFormats_CSCDigi_RPCCSCCorrelatedLCTDigi_h
 #define DataFormats_CSCDigi_RPCCSCCorrelatedLCTDigi_h  
 
-**\class CSCCorrelatedLCTDigi
+/**\class CSCCorrelatedLCTDigi
   *
   * Digi for Correlated LCT trigger primitives.
   *
