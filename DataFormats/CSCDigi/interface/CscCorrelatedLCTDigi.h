@@ -1,5 +1,5 @@
-#ifndef DataFormats_CSCDigi_RPCCSCCorrelatedLCTDigi_h
-#define DataFormats_CSCDigi_RPCCSCCorrelatedLCTDigi_h  
+#ifndef DataFormats_CSCDigi_CscCorrelatedLCTDigi_h
+#define DataFormats_CSCDigi_CscCorrelatedLCTDigi_h  
 
 /**\class CSCCorrelatedLCTDigi
   *
@@ -17,10 +17,10 @@
 #include "DataFormats/RPCDigi/interface/RPCDigi.h"
 
 
-class CSCCorrelatedLCTDigi {
+class CscCorrelatedLCTDigi {
 public:
   /// Constructors
-  CSCCorrelatedLCTDigi(const int trknmb,
+  CscCorrelatedLCTDigi(const int trknmb,
                        const int valid,
                        const int quality,
                        const int keywire,
@@ -32,7 +32,7 @@ public:
                        const uint16_t bx0 = 0,
                        const uint16_t syncErr = 0,
                        const uint16_t cscID = 0);
-  CSCCorrelatedLCTDigi();  /// default
+  CscCorrelatedLCTDigi();  /// default
 
   /// clear this LCT
   void clear();
@@ -125,6 +125,10 @@ public:
   enum Type {
     CLCTALCT,      // CLCT-centric
     ALCTCLCT,      // ALCT-centric
+    ALCTCLCTGEM,   // ALCT-CLCT-1 GEM pad
+    ALCTCLCT2GEM,  // ALCT-CLCT-2 GEM pads in coincidence
+    ALCT2GEM,      // ALCT-2 GEM pads in coincidence
+    CLCT2GEM,      // CLCT-2 GEM pads in coincidence
     CLCTONLY,      // Missing ALCT
     ALCTONLY       // Missing CLCT
   };
@@ -135,10 +139,14 @@ public:
 
   void setALCT(const CSCALCTDigi& alct) { alct_ = alct; }
   void setCLCT(const CSCCLCTDigi& clct) { clct_ = clct; }
+  void setGEM1(const GEMPadDigi& gem) { gem1_ = gem; }
+  void setGEM2(const GEMPadDigi& gem) { gem2_ = gem; }
   void setRPC(const RPCDigi& rpc) {rpc_ = rpc;}
   
   const CSCALCTDigi& getALCT() const { return alct_; }
   const CSCCLCTDigi& getCLCT() const { return clct_; }
+  const GEMPadDigi& getGEM1() const { return gem1_; }
+  const GEMPadDigi& getGEM2() const { return gem2_; }
   const RPCDigi& getRPC() const { return rpc_;}
   
   
@@ -161,10 +169,12 @@ public:
 
   CSCALCTDigi alct_;
   CSCCLCTDigi clct_;
+  GEMPadDigi gem1_;
+  GEMPadDigi gem2_;
   RPCDigi rpc_;
   
 };
 
-std::ostream& operator<<(std::ostream& o, const CSCCorrelatedLCTDigi& digi);
+std::ostream& operator<<(std::ostream& o, const CscCorrelatedLCTDigi& digi);
 
 #endif 
