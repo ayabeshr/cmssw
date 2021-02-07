@@ -14,6 +14,7 @@
 #include <iosfwd>
 #include "DataFormats/CSCDigi/interface/CSCALCTDigi.h"
 #include "DataFormats/CSCDigi/interface/CSCCLCTDigi.h"
+#include "DataFormats/GEMDigi/interface/GEMPadDigi.h"
 #include "DataFormats/RPCDigi/interface/RPCDigi.h"
 
 
